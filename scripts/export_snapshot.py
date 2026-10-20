@@ -1,8 +1,10 @@
-"""明確匯出完整草案快照，拒絕覆蓋任何不同內容，不修改既有規範。"""
+"""明確匯出完整工程規範快照，拒絕覆蓋任何不同內容，不修改既有規範。"""
 
 import argparse
 import hashlib
 import json
+import re
+import subprocess
 from pathlib import Path
 
 from check_snapshot import read_document, required_paths, verify_catalog
@@ -11,19 +13,47 @@ from check_snapshot import read_document, required_paths, verify_catalog
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def resolve_commit(specified: str | None) -> str:
+    if specified:
+        if not re.fullmatch(r"[0-9a-f]{40}", specified):
+            raise ValueError(f"指定的 commit SHA 格式不正確：{specified}")
+        return specified
+    try:
+        commit = (
+            subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT)
+            .decode("utf-8")
+            .strip()
+        )
+        if re.fullmatch(r"[0-9a-f]{40}", commit):
+            return commit
+    except Exception:
+        pass
+    raise ValueError("正式發布快照匯出需要有效的 40 位 commit SHA（可指定 --commit）")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--profile", choices=("backend", "frontend"), required=True)
     parser.add_argument("--project", type=Path, required=True)
     parser.add_argument("--update", action="store_true", help="確認更新既有快照，覆寫不同內容")
+    parser.add_argument(
+        "--commit",
+        help="指定集中庫 40 位 commit SHA，未指定時若為 published 則自動讀取當前 git HEAD",
+    )
     arguments = parser.parse_args()
     catalog_path = ROOT / "catalog.json"
     errors = verify_catalog(catalog_path)
     if errors:
         raise ValueError("；".join(errors))
     catalog = read_document(catalog_path)
-    if catalog["source"]["status"] != "draft":
-        raise ValueError("此初版工具只匯出草案；正式匯入須先完成來源 commit 真實性核對")
+    status = catalog["source"].get("status")
+    source_info = dict(catalog["source"])
+    if status == "draft":
+        source_info["commit"] = catalog["source"].get("commit")
+    elif status == "published":
+        source_info["commit"] = resolve_commit(arguments.commit)
+    else:
+        raise ValueError(f"未知的發布狀態：{status}")
     if not arguments.project.is_dir() or not (arguments.project / "AGENTS.md").is_file():
         raise ValueError("目的地必須是既有專案，不自動建立專案")
     output = arguments.project.resolve() / "docs" / "engineering-standards"
@@ -40,7 +70,7 @@ def main() -> None:
         })
     manifest = {
         "schema_version": 1,
-        "source": catalog["source"],
+        "source": source_info,
         "release_gates": catalog["release_gates"],
         "profile": arguments.profile,
         "files": files,
@@ -66,7 +96,8 @@ def main() -> None:
     for target, content in writes.items():
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(content)
-    print(f"已匯出 {arguments.profile} 接軌預覽；未修改有效規範、hooks 或 CI。")
+    desc = "正式快照" if status == "published" else "接軌預覽"
+    print(f"已匯出 {arguments.profile} {desc}；未修改有效規範、hooks 或 CI。")
 
 
 if __name__ == "__main__":

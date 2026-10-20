@@ -216,7 +216,7 @@ class SnapshotTests(unittest.TestCase):
                     self.assertEqual(result.returncode, 0, (attempt, result.stderr))
                 manifest = project / "docs/engineering-standards/manifest.json"
                 self.assertEqual(CHECKER.verify_manifest(manifest), [])
-                self.assertTrue(CHECKER.verify_manifest(manifest, True))
+                self.assertEqual(CHECKER.verify_manifest(manifest, True), [])
 
 
 if __name__ == "__main__":
