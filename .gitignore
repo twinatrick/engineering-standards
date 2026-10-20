@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+*.log
+*.err
+TODO.md
+__pycache__/
+*.pyc
+.venv/
+.idea/
+.vscode/
+.run/

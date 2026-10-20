@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "source": {
+    "repository": "https://github.com/twinatrick/engineering-standards",
+    "version": "0.1.0-draft.1",
+    "commit": null,
+    "status": "draft"
+  },
+  "release_gates": {
+    "license_review": "pending",
+    "conflicts": "resolved",
+    "public_redaction": "pending"
+  },
+  "files": [
+    {
+      "path": "LICENSES.md",
+      "sha256": "7b834c924268ae29dd2cdfee036ae54af6734fe48bc097aa67991d8b4fd33bd0"
+    },
+    {
+      "path": "governance/adoption.md",
+      "sha256": "556e78416a371b067bdca3026baf71e8d05ca90377e7d909546b062094369ca2"
+    },
+    {
+      "path": "sources.json",
+      "sha256": "bc400382b679110f64433a9812acc9165d8c531f13d84438c07683512b3b8a92"
+    },
+    {
+      "path": "standards/backend.md",
+      "sha256": "ff2744f3c92451356ea1280f4390ebf5e29af2b655ba93d3b99b3dcb224e6676"
+    },
+    {
+      "path": "standards/backend/master-agents.md",
+      "sha256": "3b24e7352d41d0b050d082176fdc3cc308c5a1aa6de3d038c85370d73381246a"
+    },
+    {
+      "path": "standards/backend/master-review.md",
+      "sha256": "e9b4c1bb4a22a82deea8e0acdfac9d13626b3753aa675ad33d0cb54713ef23b5"
+    },
+    {
+      "path": "standards/backend/master-rules.md",
+      "sha256": "1c94af1faeb73e1792c62e3d0b73dc753e891d7e33bcb9069d8a415389f64a13"
+    },
+    {
+      "path": "standards/common.md",
+      "sha256": "cd21c007d57d1d356ecfa44bd8864c7b45d51e89b667738b272e1757d17d8b83"
+    },
+    {
+      "path": "standards/frontend.md",
+      "sha256": "783c19f99746c2c712cdb0ece71f9cdc6c5341e161c6a2b299709c61615ab78a"
+    },
+    {
+      "path": "standards/frontend/master-agents.md",
+      "sha256": "b6df0423c62c926f06fa1cbf1b0497965d25d7609d3560e2da4859e8cdd666ce"
+    },
+    {
+      "path": "standards/frontend/master-review.md",
+      "sha256": "91f3fec2778e9fa2bca9b26d6d9e50ce9163fa2d89e5f8787c454d99216f77a8"
+    },
+    {
+      "path": "standards/frontend/master-rules.md",
+      "sha256": "92c69e05b4bb4d30d7996ac8148ef3e3c2942c14794f40bb4a069fa3ec5cd94c"
+    }
+  ]
+}
