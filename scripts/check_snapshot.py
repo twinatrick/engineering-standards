@@ -138,7 +138,9 @@ def verify_manifest(
     checker_digest = document.get("checker_sha256")
     if (
         document.get("checker_source_path") != "scripts/check_snapshot.py"
-        or checker_digest != hashlib.sha256((checker_path or Path(__file__)).read_bytes()).hexdigest()
+        or checker_digest != hashlib.sha256(
+            (checker_path or Path(__file__)).read_bytes()
+        ).hexdigest()
     ):
         errors.append("檢查器與清單記錄的來源不符")
     for folder in ("standards", "governance"):
