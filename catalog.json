@@ -2,14 +2,14 @@
   "schema_version": 1,
   "source": {
     "repository": "https://github.com/twinatrick/engineering-standards",
-    "version": "0.1.0",
+    "version": "0.2.0-draft.1",
     "commit": null,
-    "status": "published"
+    "status": "draft"
   },
   "release_gates": {
     "license_review": "approved",
-    "conflicts": "resolved",
-    "public_redaction": "approved"
+    "conflicts": "pending",
+    "public_redaction": "pending"
   },
   "files": [
     {
@@ -26,7 +26,7 @@
     },
     {
       "path": "standards/backend.md",
-      "sha256": "477d28651b75ae6a5cc5f53693a88cc84f38f8f240f95ba9a8f23532ed27a467"
+      "sha256": "5f0e88ae7ff481665c38dd40c663a068ed07997992795a2255302d9d192a9bf1"
     },
     {
       "path": "standards/backend/master-agents.md",
@@ -42,11 +42,11 @@
     },
     {
       "path": "standards/common.md",
-      "sha256": "36873b88fe00e6dbe33158493a5bfc089e694dfe650edce14ecc7584e9242829"
+      "sha256": "d9c107497325c87d77790448a754c6858d4d695f6d3d4c391822f4b983a4e585"
     },
     {
       "path": "standards/frontend.md",
-      "sha256": "3761f69a340c40e3e9d106a1ed45218ecc71f58569f4172a70992aade937aea5"
+      "sha256": "a392ffb2913468759b9cf6bca3ecae7a9811f5287a5092127cb73e43441e3b16"
     },
     {
       "path": "standards/frontend/master-agents.md",

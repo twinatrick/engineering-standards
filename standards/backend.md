@@ -14,3 +14,10 @@
 2. **完全限定名稱（FQN）**：原始碼一律禁止直接在方法簽名、變數宣告或實例化物件時寫入 FQN，必須顯式 `import` 並使用 Simple Name；極窄例外僅限「同一檔案內同時使用同 Simple Name 的兩個不同類別（如 `java.util.Date` 與 `java.sql.Date` 並存）」以消除歧義。Agent 指南已與根規範同步。
 
 本 Profile 已隨 0.1.0 正式發布，已知衝突均已裁決落地。
+
+## 0.2.0-draft.1 接軌修訂（未發布）
+
+- 共通 C-10–C-12 補足 ADP／SDP／SAP；後端工作文件於《開發規範.md》§5.10.3 說明適用方式，保留 Controller → Service → DataAccess → Repository 的既有架構。
+- 元件穩定度不能由 IAM、common 或 Util 的名稱推定；純工具可保持具體實作，外部 I/O 與易變策略依需求由核心定義契約、基礎設施提供實作。
+- 使用者於 2026-11-01 確認：生產程式碼全面禁止 `@Lazy`（含 `self`），同類別事務／快取需求委派 `com.example.BackendArchitectureLab.Util.TransactionExecutor`／`com.example.BackendArchitectureLab.Util.CacheExecutor`。後端工作版 AGENTS 與根規範須一致。
+- 固定來源 `backend/master-*.md` 是歷史證據，不直接修補；現有 4-Tier DAG 的細節與本補充須於發布前核對來源、衝突及遷移影響，不將本節宣稱為原始基準全文已更新。

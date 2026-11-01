@@ -216,7 +216,16 @@ class SnapshotTests(unittest.TestCase):
                     self.assertEqual(result.returncode, 0, (attempt, result.stderr))
                 manifest = project / "docs/engineering-standards/manifest.json"
                 self.assertEqual(CHECKER.verify_manifest(manifest), [])
-                self.assertEqual(CHECKER.verify_manifest(manifest, True), [])
+                exported = CHECKER.read_document(manifest)
+                catalog = CHECKER.read_document(ROOT / "catalog.json")
+                self.assertEqual(exported["source"]["status"], catalog["source"]["status"])
+                self.assertEqual(exported["source"]["version"], catalog["source"]["version"])
+                # 工作草案匯出應完整可讀，但不能因此取得正式採用資格。
+                strict_errors = CHECKER.verify_manifest(manifest, True)
+                if catalog["source"]["status"] == "published":
+                    self.assertEqual(strict_errors, [])
+                else:
+                    self.assertIn("目前仍為未發布草案", strict_errors)
 
 
 if __name__ == "__main__":

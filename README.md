@@ -2,7 +2,7 @@
 
 共通、後端與前端工程規範的集中權威來源。公開儲存庫為 <https://github.com/twinatrick/engineering-standards>。
 
-目前版本：`0.1.0`（正式發布）。規範來源固定為兩端遠端 master 基準提交，詳見 [來源清單](sources.json)。
+最新正式版本：`0.1.0`。目前工作目錄為 `0.2.0-draft.1`（未發布），含使用者於 2026-11-01 核准的共通、前端與後端 ADP／SDP／SAP 規範修訂。消費端仍鎖定 `0.1.0`，本次不發布、不自動匯出或升版。原始基準來源見 [來源清單](sources.json)，固定匯入原文不直接修改。
 
 ## 閱讀入口
 
@@ -32,6 +32,8 @@ python -m unittest discover -s tests -v
 
 匯出正式快照至消費端專案：
 
+以下為正式發布後的操作說明；目前工作目錄為未發布草案，本次不執行匯出，亦不可使用工作草案覆蓋消費端 `0.1.0` 快照。
+
 ```powershell
 python scripts/export_snapshot.py --profile backend --project ../Backend-Architecture-Lab --update
 python scripts/export_snapshot.py --profile frontend --project ../v3-admin-vite-templete --update
@@ -42,7 +44,9 @@ python scripts/export_snapshot.py --profile frontend --project ../v3-admin-vite-
 
 SHA-256 只能偵測檔案相對本地清單的變動；同時竄改檔案與清單仍可能通過。匯入與升版必須另比對可信來源 commit，不能把雜湊當來源認證。
 
-## 發布門禁審查結果
+## 0.1.0 歷史發布門禁審查結果
+
+以下僅記錄已發布 `0.1.0`，不認證目前工作草案。`0.2.0-draft.1` 的內容核准不等於完成發布審查；清單的衝突與公開脫敏門禁維持待審，後續須核對新來源、遷移影響與真實提交後另行核准發布。
 
 1. **來源與授權審查（`license_review`）**：`approved`。原專案版權與授權聲明完整保留，本庫整理文件依 CC BY 4.0、工具依 MIT 發布。
 2. **規範衝突裁決（`conflicts`）**：`resolved`。三項衝突經使用者明確裁決，雙端與集中庫說明一致。
