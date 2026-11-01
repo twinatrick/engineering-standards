@@ -2,7 +2,7 @@
 
 共通、後端與前端工程規範的集中權威來源。公開儲存庫為 <https://github.com/twinatrick/engineering-standards>。
 
-最新正式版本：`0.2.0`，包含共通、前端與後端 ADP／SDP／SAP 規範修訂、發布與採用治理及隔離候選工具防護；授權、衝突與公開審查門禁已通過。版本與提交對應以 `0.2.0` tag 為準。消費端仍鎖定 `0.1.0`，不自動匯出或升版。原始基準來源見 [來源清單](sources.json)，固定匯入原文不直接修改。
+最新正式版本：`0.2.1`，僅修正快照檢查器的超長程式行並補充回歸測試，沿用 `0.2.0` 規範與檢查語意；授權、衝突與公開審查門禁已通過。版本與提交對應以 `0.2.1` tag 為準，不自動匯出或升級任何消費端。原始基準來源見 [來源清單](sources.json)，固定匯入原文不直接修改。
 
 ## 閱讀入口
 
@@ -10,8 +10,8 @@
 - [採用、版本、例外與發布治理](governance/adoption.md)
 - [完整盤點與分類](docs/inventory.md)、[衝突／落實缺口裁決](docs/findings.md)
 - [正式發布驗證紀錄](docs/verification.md)
-- [0.2.0 版本說明](docs/release-notes-0.2.0.md)
-- [0.2.0 發布前審查紀錄](docs/release-review-0.2.0.md)
+- [0.2.1 版本說明](docs/release-notes-0.2.1.md)、[0.2.1 發布前審查紀錄](docs/release-review-0.2.1.md)
+- [0.2.0 歷史版本說明](docs/release-notes-0.2.0.md)、[0.2.0 發布前審查紀錄](docs/release-review-0.2.0.md)
 - [待核准改善提案](proposals/backlog.md)、[授權與來源聲明](LICENSES.md)
 - [治理詞彙](CONTEXT.md)、[集中權威決策](docs/adr/0001-central-authority-with-pinned-snapshots.md)、[發布生命週期與相容性決策](docs/adr/0003-release-lifecycle-and-compliance-compatibility.md)
 
@@ -52,7 +52,7 @@ SHA-256 只能偵測檔案相對本地清單的變動；同時竄改檔案與清
 
 ## 0.1.0 歷史發布門禁審查結果
 
-以下僅記錄已發布 `0.1.0`，不代替 `0.2.0` 的[本版審查紀錄](docs/release-review-0.2.0.md)。本版三項門禁已通過，清單狀態為 `published`；實際發布提交須核對 `0.2.0` tag 指向的完整 SHA，不以本地清單作遠端來源認證。
+以下僅記錄已發布 `0.1.0`，不代替 `0.2.1` 的[本版審查紀錄](docs/release-review-0.2.1.md)。本版三項門禁已通過，清單狀態為 `published`；實際發布提交須核對 `0.2.1` tag 指向的完整 SHA，不以本地清單作遠端來源認證。
 
 1. **來源與授權審查（`license_review`）**：`approved`。原專案版權與授權聲明完整保留，本庫整理文件依 CC BY 4.0、工具依 MIT 發布。
 2. **規範衝突裁決（`conflicts`）**：`resolved`。三項衝突的適用規則已統一，雙端與集中庫說明一致。

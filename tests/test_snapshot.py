@@ -140,6 +140,43 @@ class SnapshotTests(unittest.TestCase):
         self.save()
         self.assertTrue(CHECKER.verify_manifest(self.manifest))
 
+    def test_checker_source_lines_do_not_exceed_100_characters(self) -> None:
+        source = (ROOT / "scripts/check_snapshot.py").read_text(encoding="utf-8")
+        for number, line in enumerate(source.splitlines(), 1):
+            with self.subTest(line=number):
+                self.assertLessEqual(len(line), 100)
+
+    def test_wrong_checker_source_does_not_read_checker_file(self) -> None:
+        self.document["checker_source_path"] = "scripts/other.py"
+        self.save()
+        missing_checker = self.root / "missing_checker.py"
+        errors = CHECKER.verify_manifest(self.manifest, checker_path=missing_checker)
+        self.assertIn("檢查器與清單記錄的來源不符", errors)
+        self.assertFalse(missing_checker.exists())
+
+    def test_checker_file_cli_hashes_without_execution_or_modification(self) -> None:
+        historical = self.root / "historical_checker.py"
+        content = b"raise AssertionError('historical checker must not run')\n"
+        historical.write_bytes(content)
+        before_modified = historical.stat().st_mtime_ns
+        self.document["source"].update({
+            "version": "0.2.0", "status": "published", "commit": "a" * 40,
+        })
+        self.document["release_gates"] = dict(CHECKER.RELEASE_GATES)
+        self.document["checker_sha256"] = hashlib.sha256(content).hexdigest()
+        self.save()
+        result = subprocess.run(
+            [
+                sys.executable, str(ROOT / "scripts/check_snapshot.py"),
+                "--manifest", str(self.manifest), "--checker-file", str(historical),
+                "--require-published",
+            ],
+            capture_output=True,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(historical.read_bytes(), content)
+        self.assertEqual(historical.stat().st_mtime_ns, before_modified)
+
     def test_draft_cannot_be_formal_adoption(self) -> None:
         self.assertTrue(CHECKER.verify_manifest(self.manifest, require_published=True))
 
