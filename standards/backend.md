@@ -15,9 +15,9 @@
 
 本 Profile 已隨 0.1.0 正式發布，已知衝突均已裁決落地。
 
-## 0.2.0-draft.1 接軌修訂（未發布）
+## 0.2.0 接軌修訂
 
-- 共通 C-10–C-12 補足 ADP／SDP／SAP；後端工作文件於《開發規範.md》§5.10.3 說明適用方式，保留 Controller → Service → DataAccess → Repository 的既有架構。
+- 共通 C-10–C-12 補足 ADP／SDP／SAP；本節參照後端提交 `3d417a6eaa6709a50afa989f1828aa7de1ed45dd` 的《開發規範.md》§5.10.3，保留 Controller → Service → DataAccess → Repository 的既有架構。參照提交不隨原專案工作文件自動更新。
 - 元件穩定度不能由 IAM、common 或 Util 的名稱推定；純工具可保持具體實作，外部 I/O 與易變策略依需求由核心定義契約、基礎設施提供實作。
-- 使用者於 2026-11-01 確認：生產程式碼全面禁止 `@Lazy`（含 `self`），同類別事務／快取需求委派 `com.example.BackendArchitectureLab.Util.TransactionExecutor`／`com.example.BackendArchitectureLab.Util.CacheExecutor`。後端工作版 AGENTS 與根規範須一致。
-- 固定來源 `backend/master-*.md` 是歷史證據，不直接修補；現有 4-Tier DAG 的細節與本補充須於發布前核對來源、衝突及遷移影響，不將本節宣稱為原始基準全文已更新。
+- 生產程式碼全面禁止 `@Lazy`（含 `self`），同類別事務／快取需求委派 `com.example.BackendArchitectureLab.Util.TransactionExecutor`／`com.example.BackendArchitectureLab.Util.CacheExecutor`。這是本版補充要求，不宣稱已存在於 `0.1.0` 固定來源。
+- 固定來源 `backend/master-*.md` 保留完整來源基準，不直接修補。本版僅納入共通 C-10–C-12 與本節明列補充，不將參照提交的完整 4-Tier DAG 條文或其他未列變更一併納入；適用範圍與衝突／遷移影響審查已通過，不代表消費端已完成遷移。

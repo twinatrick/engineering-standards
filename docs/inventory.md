@@ -27,7 +27,7 @@
 | 前端 `AGENTS.md` | pnpm、三道品質防線及 Git 安全 | `standards/frontend/master-agents.md` 全文；共通 C-06–C-09 |
 | 前端 `review.md` | 正式審查合約，不是臨時 review 輸出 | `standards/frontend/master-review.md` 全文；`any` 措辭差異列衝突 |
 
-上述六份來源均逐位元組保留，不修改文字以掩蓋既有問題。來源授權仍待確認；完整匯入不等於已完成公開散布授權。
+上述六份來源均逐位元組保留，不修改文字以掩蓋既有問題。授權審查狀態見 `LICENSES.md` 與 `sources.json`；第三方原授權仍須保留，完整匯入本身不代表第三方改授權。
 
 ## 補充材料：保留原地、提煉治理、不批搬
 

@@ -2,31 +2,31 @@
   "schema_version": 1,
   "source": {
     "repository": "https://github.com/twinatrick/engineering-standards",
-    "version": "0.2.0-draft.1",
+    "version": "0.2.0",
     "commit": null,
-    "status": "draft"
+    "status": "published"
   },
   "release_gates": {
     "license_review": "approved",
-    "conflicts": "pending",
-    "public_redaction": "pending"
+    "conflicts": "resolved",
+    "public_redaction": "approved"
   },
   "files": [
     {
       "path": "LICENSES.md",
-      "sha256": "16de9d8b2b75a4e6fd704b59a1d4d913ec03e2f86c166e80a68044fc1ff8d03a"
+      "sha256": "e0d2f1acb64f8ad6c1bc5e0a5b18ad7ddb9f6515d220d16bc1a380e4973dcf0c"
     },
     {
       "path": "governance/adoption.md",
-      "sha256": "20d12664987da31701b6751c7929bb568e81f028d5c78fc5bfb105c54ed53c1e"
+      "sha256": "4c8d4c5b07b5fe26c5f8f319da8ae591a21ee33fe6a36e7ae4f72fb49fa72586"
     },
     {
       "path": "sources.json",
-      "sha256": "bc400382b679110f64433a9812acc9165d8c531f13d84438c07683512b3b8a92"
+      "sha256": "978130a9958f6411b25b10ddc6b57d66f7f228294a48ddc6c9985f5d93d26d2a"
     },
     {
       "path": "standards/backend.md",
-      "sha256": "5f0e88ae7ff481665c38dd40c663a068ed07997992795a2255302d9d192a9bf1"
+      "sha256": "42f6a96dc3c7898477dfb6e4fad51a6f8bd9f1b860b8fe7dccebcdf39319b68b"
     },
     {
       "path": "standards/backend/master-agents.md",
@@ -42,11 +42,11 @@
     },
     {
       "path": "standards/common.md",
-      "sha256": "d9c107497325c87d77790448a754c6858d4d695f6d3d4c391822f4b983a4e585"
+      "sha256": "7313e9b30497cb33943944f3a9805633bd837e56e35d42297f64289a116828f4"
     },
     {
       "path": "standards/frontend.md",
-      "sha256": "a392ffb2913468759b9cf6bca3ecae7a9811f5287a5092127cb73e43441e3b16"
+      "sha256": "c45ca2fdfa58676bb96dc381a1e70321f58c2dfd0ad1b74eea3481d5b3c8fcf0"
     },
     {
       "path": "standards/frontend/master-agents.md",

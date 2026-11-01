@@ -6,9 +6,9 @@
 
 | ID | 互斥／不一致要求與證據 | 裁決結果與落地動作 | 狀態 |
 | --- | --- | --- | --- |
-| CF-01 | 後端 `開發規範.md` §3.2（159–164 行）Query DTO 在 `Dto/Query/`；§6.2.1（406–410 行）卻指定 `com.example.BackendArchitectureLab.Vo.Search.BaseSearchQuery`。實際基底為 `com.example.BackendArchitectureLab.Dto.Query.BaseSearchQuery`，沒有舊路徑檔案 | **使用者裁決**：以 master 實際類別與新模型分層為準，修訂後端《開發規範.md》§6.2.1 雙軌章節舊路徑筆誤；原始 Java 程式碼維持現狀不動；集中庫後端 Profile 記載一致性說明。 | **已裁決並落實** |
-| CF-02 | 後端 `AGENTS.md` 52 行為絕對 FQN 禁令；根規範 §5.12（360–368 行）准許同檔同 Simple Name 的極窄例外；`.github/ai-review/check_java.py` 233–253 行未辨識此例外 | **使用者裁決**：保留根規範的極窄同 Simple Name 例外，後端《AGENTS.md》已同步補充例外條款，確立原則禁止、同名消除歧義時例外之統一標準；檢查器辨識改善另列後續任務。 | **已裁決並落實** |
-| CF-03 | 前端根規範 §2.2（59–62 行）及 AGENTS 禁止「濫用 any」；正式 `review.md` 23–24 行卻寫生產程式碼「禁止 any」 | **使用者裁決**：統一為「禁止濫用 any」，優先使用明確型別，外部與未知資料使用 `unknown`；前端《review.md》已同步修訂，消除絕對禁令與根規範／AGENTS 的矛盾。 | **已裁決並落實** |
+| CF-01 | 後端 `開發規範.md` §3.2（159–164 行）Query DTO 在 `Dto/Query/`；§6.2.1（406–410 行）卻指定 `com.example.BackendArchitectureLab.Vo.Search.BaseSearchQuery`。實際基底為 `com.example.BackendArchitectureLab.Dto.Query.BaseSearchQuery`，沒有舊路徑檔案 | **適用規則**：以 master 實際類別與新模型分層為準，修訂後端《開發規範.md》§6.2.1 雙軌章節舊路徑筆誤；原始 Java 程式碼維持現狀不動；集中庫後端 Profile 記載一致性說明。 | **已裁決並落實** |
+| CF-02 | 後端 `AGENTS.md` 52 行為絕對 FQN 禁令；根規範 §5.12（360–368 行）准許同檔同 Simple Name 的極窄例外；`.github/ai-review/check_java.py` 233–253 行未辨識此例外 | **適用規則**：保留根規範的極窄同 Simple Name 例外，後端《AGENTS.md》已同步補充例外條款，確立原則禁止、同名消除歧義時例外之統一標準；檢查器辨識改善另列後續任務。 | **已裁決並落實** |
+| CF-03 | 前端根規範 §2.2（59–62 行）及 AGENTS 禁止「濫用 any」；正式 `review.md` 23–24 行卻寫生產程式碼「禁止 any」 | **適用規則**：統一為「禁止濫用 any」，優先使用明確型別，外部與未知資料使用 `unknown`；前端《review.md》已同步修訂，消除絕對禁令與根規範／AGENTS 的矛盾。 | **已裁決並落實** |
 
 註：固定提交匯入檔 `standards/*/master-*.md` 維持原始 bytes 作為歷史基準比對，不直接修改原始匯入檔案。
 
@@ -34,8 +34,10 @@
 
 後端 AI Review 的 CRITICAL／HIGH＋confidence gate 與本地 HIGH／MEDIUM gate 處理的是不同流程；前端也有自己的 HIGH／MEDIUM 審查門檻。**這是適用範圍差異，不合併成單一分級表，也不算互斥衝突。**
 
-## 授權阻擋
+## 授權審查
 
-後端沒有找到根授權或 POM licenses；前端只有 package MIT 標示且保留上游模板來源。請權利人確認六份匯入文件的作者、衍生關係、散布及改授權權限，再落實文件 CC BY 4.0／工具 MIT 目標。完整來源及本次新產出都不因草案存在而自動取得重新授權。
+目前授權審查為 `approved`，`LICENSES.md`、`sources.json` 與本版清單的狀態一致。
 
-來源衝突裁決、授權和人工脫敏完成前，維持接軌預覽；現有原專案規範不被草案取代。
+沿用整理文件 CC BY 4.0／自研工具 MIT 政策；第三方模板與其他第三方內容仍保留原授權。詳見 [本版發布前審查](release-review-0.2.0.md)。
+
+本版來源核對、適用關係及公開內容審查已完成，`license_review: approved`、`conflicts: resolved`、`public_redaction: approved`。版本為 `0.2.0`，清單狀態為 `published`；發布提交以同名 tag 核對，現有原專案鎖定快照不被取代。

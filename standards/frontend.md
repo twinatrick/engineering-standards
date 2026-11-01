@@ -14,10 +14,10 @@
 
 本 Profile 已隨 0.1.0 正式發布，已知衝突均已裁決落地；未新增額外覆蓋率門檻，亦不套用後端測試工具。
 
-## 0.2.0-draft.1 接軌修訂（未發布）
+## 0.2.0 接軌修訂
 
-- 共通 C-10–C-12 適用 Vue／TypeScript 元件、Service、Store、Hooks、Router 與 API 基礎設施；前端工作文件於《開發規範.md》§4.5 細化，AGENTS 與審查合約同步引用。
+- 共通 C-10–C-12 適用 Vue／TypeScript 元件、Service、Store、Hooks、Router 與 API 基礎設施；本節參照前端提交 `5985351cc3dfc8f7b99368a2fe660852d3d4de7b` 的《開發規範.md》§4.5。參照提交不隨原專案工作文件自動更新，也不將其他未列變更一併納入。
 - 保留既有外部請求流程，不另創 Views → Service → Store → Hooks → API 的必經鏈；Store／Hooks 的依賴角色取決於職責，不按目錄固定分級。
 - 共用 Utils、Types、API 傳輸基礎設施不得反向依賴具體頁面；跨模組協作以單向編排或核心契約隔離。Props／Emits、函式簽名、TypeScript 型別皆可表達契約，不強制每個 Service 增加 Interface／Impl。
 - 架構審查須提供循環路徑或反向引用證據，區分執行期 import 與 `import type`；候選搜尋不等於完整依賴圖驗證，未新增自動化門禁或套件。
-- 固定來源 `frontend/master-*.md` 保留原始 bytes；新補充待正式發布及消費端核准升版，不覆寫既有快照。
+- 固定來源 `frontend/master-*.md` 保留原始 bytes；本版補充仍須經消費端獨立核准升版，不因集中庫發布而覆寫既有快照。

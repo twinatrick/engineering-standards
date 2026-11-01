@@ -12,7 +12,6 @@
 | 前端遠端基準 | `8470f3f8981f1117e942b24e6ed287e89d328c6d`（origin/master） |
 | 前端當前進度 | 已提交並推送裁決修訂至 master（`74c2ab1`） |
 | 後端當前進度 | 已在分支 `chore/engineering-standards-adoption` 提交裁決修訂（`9acc1f3`）並建立 PR #169 |
-| 使用者既有工作 | 後端原有 4 份未追蹤文件完整保留，未受干擾 |
 
 ## 已執行檢查與門禁審查
 
